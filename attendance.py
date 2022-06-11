@@ -1,3 +1,4 @@
+from pickle import NONE
 import cv2
 import numpy as np
 import face_recognition
@@ -43,12 +44,12 @@ def attendance(name):
 encodeListKnown = faceEncodings(images)
 print('All Encodings Complete!!!')
 
-cap = cv2.VideoCapture(1)
+cap = cv2.VideoCapture(0)
 
 while True:
     ret, frame = cap.read()
-    faces = cv2.resize(frame, (0, 0), None, 0.25, 0.25)
-    faces = cv2.cvtColor(faces, cv2.COLOR_BGR2RGB)
+    faces =cv2.resize(frame, (0, 0), None, 0.25, 0.25)
+    faces =cv2.cvtColor(faces, cv2.COLOR_BGR2RGB)
 
     facesCurrentFrame = face_recognition.face_locations(faces)
     encodesCurrentFrame = face_recognition.face_encodings(faces, facesCurrentFrame)
